@@ -42,7 +42,7 @@ const section = new Section(
   ".todos__list"
 );
 
-// Popup with Form [cite: 74]
+// Popup with Form
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (formData) => {
