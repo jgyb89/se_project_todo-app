@@ -1,17 +1,35 @@
 import Popup from "./Popup.js";
 
-// Make it a child class of Popup
-
 class PopupWithForm extends Popup {
-  // destructuring is grabbing properties with inside an object and assigning them variables, now available inside this function
   constructor({ popupSelector, handleFormSubmit }) {
-    // creating an object literal, giving it popupSelector property
     super({ popupSelector });
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popupElement.querySelector(".popup__form");
+    this._inputList = this._form.querySelectorAll(".popup__input");
   }
 
-  open() {}
+  // Collects data from all input fields
+  _getInputValues() {
+    const values = {};
+    this._inputList.forEach((input) => {
+      values[input.name] = input.value;
+    });
+    return values;
+  }
 
-  close() {}
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    });
+  }
+
+  // Overriding close to reset the form
+  close() {
+    this._form.reset();
+    super.close();
+  }
 }
 
 export default PopupWithForm;
