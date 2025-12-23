@@ -2,7 +2,6 @@ class FormValidator {
   constructor(settings, formEl) {
     // Save settings and the specific form element to this instance
     this._inputSelector = settings.inputSelector;
-    this._formSelector = settings.formSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;

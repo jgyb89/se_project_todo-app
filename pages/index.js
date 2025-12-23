@@ -31,16 +31,14 @@ const createTodo = (item) => {
 };
 
 // Section
-const section = new Section(
-  {
-    items: initialTodos,
-    renderer: (item) => {
-      const todoElement = createTodo(item);
-      section.addItem(todoElement);
-    },
+const section = new Section({
+  items: initialTodos,
+  renderer: (item) => {
+    const todoElement = createTodo(item);
+    section.addItem(todoElement);
   },
-  ".todos__list"
-);
+  containerSelector: ".todos__list",
+});
 
 // Popup with Form
 const addTodoPopup = new PopupWithForm({
